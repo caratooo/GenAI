@@ -1,22 +1,50 @@
-document.getElementById('capture').onclick = async () => {
-    try {
-        const stream = await navigator.mediaDevices.getUserMedia({ video: true });
-        if (enhancer) {
-            let frame = enhancer.getFrameFromVideo(stream);
-
-            let width = screen.availWidth;
-            let height = screen.availHeight;
-            let popW = 640, popH = 480; // Adjust dimensions as needed
-            let left = (width - popW) / 2;
-            let top = (height - popH) / 2;
-
-            popWindow = window.open('', 'popup', 'width=' + popW + ',height=' + popH +
-                ',top=' + top + ',left=' + left + ', scrollbars=yes');
-
-            popWindow.document.body.appendChild(frame.canvas);
-        }
-    } catch (error) {
-        console.error('Error accessing camera:', error);
-        // Handle error (e.g., display a message to the user)
+// Event listener for html page load (this function is called when the html page is loaded)
+document.addEventListener("DOMContentLoaded", function() {
+    const fileInput = document.getElementById("mediaFile");
+    if (fileInput) {
+        // Event listener for file input change
+        // (whenever a change is made to "audioFile" from the html, the function "handleFileSelect" is called)
+        fileInput.addEventListener("change", handleFileSelect);
+    } else {
+        console.error("Element with ID 'mediaFile' not found.");
     }
-};
+});
+
+
+// handle file selection
+function handleFileSelect(event) {
+    const fileInput = document.getElementById("mediaFile");
+    if (!fileInput) {
+        console.error("Element with ID 'mediaFile' not found.");
+        return;
+    }
+    const file = event.target.files[0]; // Get the selected file
+    
+
+    //print the file name to the console for now
+    console.log("Selected image file:", file);
+
+    // Event listener for form submission
+    document.getElementById('upload-form').addEventListener('submit', function(event) {
+        event.preventDefault();
+        console.log("Form submitted");
+        previewImage();
+    });
+}
+
+function previewImage() {
+    var input = document.getElementById('mediaFile');
+    var preview = document.getElementById('image-preview');
+    
+    var file = input.files[0];
+    var reader = new FileReader();
+        
+    reader.onload = function(e) {
+        preview.src = e.target.result;
+    }
+        
+    reader.readAsDataURL(file);
+    
+}
+
+previewImage();
