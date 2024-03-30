@@ -2,6 +2,7 @@ from flask import Flask, request, jsonify
 import os
 import requests
 from google.cloud import speech_v1p1beta1 as speech
+from google.cloud import aiplatform_v1beta1 as aiplatform
 
 app = Flask(__name__)
 
@@ -11,9 +12,6 @@ os.environ["GOOGLE_APPLICATION_CREDENTIALS"] = "users/ameera/documents/smiling-b
 # Gemini AI API endpoint URLs
 PARAPHRASE_ENDPOINT = "https://api.gemini.ai/paraphrase"
 SUMMARIZE_ENDPOINT = "https://api.gemini.ai/summarize"
-
-# Gemini AI API key
-API_KEY = "your-api-key"
 
 def transcribe_audio(audio_file):
     client = speech.SpeechClient()
@@ -39,26 +37,66 @@ def transcribe_audio(audio_file):
     return transcribed_text
 
 def paraphrase_text(text):
-    headers = {
-        "Content-Type": "application/json",
-        "Authorization": f"Bearer {API_KEY}"
-    }
-    data = {
-        "text": text
-    }
-    response = requests.post(PARAPHRASE_ENDPOINT, json=data, headers=headers)
-    return response.json()
+    # Create a client for interacting with the Gemini AI API
+    client = aiplatform.gapic.PredictionServiceClient()
+
+    # Set the endpoint for the API
+    client.transport.endpoint = "us-central1-aiplatform.googleapis.com:443"
+
+    # Set the location of the model
+    location = "us-central1"
+
+    # Set the parameters for the prediction
+    parameters_dict = {}
+
+    # Set the input data for the prediction
+    instance = aiplatform.gapic.schema.predict.instance.TextExtractionPredictionInstance(
+        content=text,
+        mime_type="text/plain"  # The MIME type of the input text
+    ).to_value()
+
+    # Perform the prediction
+    response = client.predict(
+        endpoint=f"projects/{os.getenv('GOOGLE_CLOUD_PROJECT')}/locations/{location}/models/text-bison-001",
+        instances=[instance],
+        parameters_dict=parameters_dict,
+    )
+
+    # Extract the predicted text
+    predicted_text = response.predictions[0].text_extraction.paraphrase.content
+
+    return predicted_text
 
 def summarize_text(text):
-    headers = {
-        "Content-Type": "application/json",
-        "Authorization": f"Bearer {API_KEY}"
-    }
-    data = {
-        "text": text
-    }
-    response = requests.post(SUMMARIZE_ENDPOINT, json=data, headers=headers)
-    return response.json()
+    # Create a client for interacting with the Gemini AI API
+    client = aiplatform.gapic.PredictionServiceClient()
+
+    # Set the endpoint for the API
+    client.transport.endpoint = "us-central1-aiplatform.googleapis.com:443"
+
+    # Set the location of the model
+    location = "us-central1"
+
+    # Set the parameters for the prediction
+    parameters_dict = {}
+
+    # Set the input data for the prediction
+    instance = aiplatform.gapic.schema.predict.instance.TextExtractionPredictionInstance(
+        content=text,
+        mime_type="text/plain"  # The MIME type of the input text
+    ).to_value()
+
+    # Perform the prediction
+    response = client.predict(
+        endpoint=f"projects/{os.getenv('GOOGLE_CLOUD_PROJECT')}/locations/{location}/models/text-bison-001",
+        instances=[instance],
+        parameters_dict=parameters_dict,
+    )
+
+    # Extract the predicted text
+    predicted_text = response.predictions[0].text_extraction.summary.content
+
+    return predicted_text
 
 @app.route("/", methods=["GET"])
 def index():
@@ -86,4 +124,4 @@ def upload():
     })
 
 if __name__ == "__main__":
-    app.run(debug=True)
+    app.run(debug=True, port=5000)
