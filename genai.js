@@ -1,27 +1,22 @@
-document.addEventListener("DOMContentLoaded", function() {
-    document.getElementById("upload-form").addEventListener("submit", function(event) {
-        event.preventDefault();
-        var formData = new FormData(this);
+document.getElementById('capture').onclick = async () => {
+    try {
+        const stream = await navigator.mediaDevices.getUserMedia({ video: true });
+        if (enhancer) {
+            let frame = enhancer.getFrameFromVideo(stream);
 
-        fetch("/upload", {
-            method: "POST",
-            body: formData
-        })
-        .then(response => response.json())
-        .then(data => {
-            // Display transcribed text
-            document.getElementById("result-container").innerHTML = `
-                <h2>Transcribed Text:</h2>
-                <p>${data.transcribed_text}</p>
-                <h2>Paraphrased Text:</h2>
-                <p>${data.paraphrased_result}</p>
-                <h2>Summarized Text:</h2>
-                <p>${data.summarized_result}</p>
-            `;
-        })
-        .catch(error => {
-            console.error("Error:", error);
-        });
-    });
-});
+            let width = screen.availWidth;
+            let height = screen.availHeight;
+            let popW = 640, popH = 480; // Adjust dimensions as needed
+            let left = (width - popW) / 2;
+            let top = (height - popH) / 2;
 
+            popWindow = window.open('', 'popup', 'width=' + popW + ',height=' + popH +
+                ',top=' + top + ',left=' + left + ', scrollbars=yes');
+
+            popWindow.document.body.appendChild(frame.canvas);
+        }
+    } catch (error) {
+        console.error('Error accessing camera:', error);
+        // Handle error (e.g., display a message to the user)
+    }
+};
