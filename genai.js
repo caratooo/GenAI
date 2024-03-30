@@ -23,22 +23,28 @@ function handleFileSelect(event) {
 
     //print the file name to the console for now
     console.log("Selected image file:", file);
+
+    // Event listener for form submission
+    document.getElementById('upload-form').addEventListener('submit', function(event) {
+        event.preventDefault();
+        console.log("Form submitted");
+        previewImage();
+    });
 }
 
 function previewImage() {
     var input = document.getElementById('mediaFile');
     var preview = document.getElementById('image-preview');
     
-    input.addEventListener('change', function() {
-        var file = input.files[0];
-        var reader = new FileReader();
+    var file = input.files[0];
+    var reader = new FileReader();
         
-        reader.onload = function(e) {
-            preview.src = e.target.result;
-        }
+    reader.onload = function(e) {
+        preview.src = e.target.result;
+    }
         
-        reader.readAsDataURL(file);
-    });
+    reader.readAsDataURL(file);
+    
 }
 
 previewImage();
