@@ -57,6 +57,13 @@
         <br>
         <input type="submit" value="Upload">
     </form>
+    <br>
+    <form action="/upload" enctype="multipart/form-data">
+      <label for="mediaFile">Or upload your own lecture notes:</label>
+      <input type="file" name="fileToUpload" id="fileToUpload" accept=".pdf,.txt" required>
+      <br>
+      <input type="submit" value="Upload">
+  </form>
 </div>
 
 <div id="result-container">
