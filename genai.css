@@ -1,0 +1,10 @@
+body {
+    background-color: lightgoldenrodyellow; /* Change background color */
+    margin: 100;
+    padding: 100;
+}
+
+h1 {
+    color: blueviolet; /* Change title color */
+    text-align: center; /* Center align the title */
+}
