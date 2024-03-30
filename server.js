@@ -1,34 +1,21 @@
-const {MongoClient} = require('mongodb');
+// server.js
+const express = require('express');
+const sqlite3 = require('sqlite3').verbose();
 
-async function main(){
-    /**
-     * Connection URI. Update <username>, <password>, and <your-cluster-url> to reflect your cluster.
-     * See https://docs.mongodb.com/ecosystem/drivers/node/ for more details
-     */
-    const uri = "mongodb+srv://mahnsirupa10:<password>@cluster0.ncsejux.mongodb.net/"
+const app = express();
+const db = new sqlite3.Database('database.sqlite');
 
+// Define route to fetch data from SQLite database
+app.get('/data', (req, res) => {
+    db.all('SELECT * FROM your_table', (err, rows) => {
+        if (err) {
+            res.status(500).json({ error: err.message });
+            return;
+        }
+        res.json(rows);
+    });
+});
 
-    const client = new MongoClient(uri);
-
-    try {
-        // Connect to the MongoDB cluster
-        await client.connect();
-
-        // Make the appropriate DB calls
-        await  listDatabases(client);
-
-    } catch (e) {
-        console.error(e);
-    } finally {
-        await client.close();
-    }
-}
-
-main().catch(console.error);
-
-async function listDatabases(client){
-    databasesList = await client.db().admin().listDatabases();
-
-    console.log("Databases:");
-    databasesList.databases.forEach(db => console.log(` - ${db.name}`));
-};
+// Server setup
+const PORT = process.env.PORT || 3000;
+app.listen(PORT, () => console.log(`Server running on port ${PORT}`));
