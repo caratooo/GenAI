@@ -22,6 +22,8 @@ function handleFileSelect(event) {
 
     //print the file name to the console for now
     console.log("Selected audio file:", file);
+
+    
     
     
 }
