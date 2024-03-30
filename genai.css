@@ -4,12 +4,13 @@ font-family:'Times New Roman', serif;
 color: green;
 }
 
-.adddropfiles{
-    margin-top: 50px;
-    font-family:'Times New Roman', serif;
-    text-align: center; 
+.adddropfiles {
+    margin-top: 50px; /* Adjust this value to move it up or down */
+    font-family: 'Times New Roman', serif;
+    text-align: center;
     display: flex;
-    flex-direction: column;}
+    flex-direction: column;
+}
 
     .menu {
         display: flex;
@@ -67,15 +68,12 @@ color: green;
         font-weight: bold;
       }
 
-
-
-
       .adddropfiles {
-        display: flex;
-        justify-content: center;
-        align-items: center;
+        margin-top: -100px; 
+        font-family: 'Times New Roman', serif;
         text-align: center;
-         /* Optional: Center vertically on the page */
+        display: flex;
+        flex-direction: column;
     }
     
     .center-align {
