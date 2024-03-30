@@ -8,15 +8,56 @@
     <link rel="stylesheet" type="text/css" href="genai.css">
 </head>
 <body>
-    <h1>hi all! i'm the title!</h1>
-    <h2>Upload a file below.</h2>
 
+   <div class=h2> <h1>Accessinotes?</h1> </div>
+
+<div class="menu">
+  <div class="menu-item">
+    <label>Choose your university:</label>
+    <div class="dropdown">
+        <button class="dropbtn">University of Toronto</button>
+        <div class="dropdown-content">
+            <a href="#">York University</a>
+            <a href="#">McMaster University</a>
+            <a href="#">GenAi High School</a>
+      </div>
+    </div>
+  </div>
+  
+  <div class="menu-item">
+    <label>Choose your program:</label>
+    <div class="dropdown">
+      <button class="dropbtn">Computer Science</button>
+      <div class="dropdown-content">
+        <a href="#">Software Engineering</a>
+        <a href="#">Electrical Engineering</a>
+        <a href="#">Digital Media</a>
+      </div>
+    </div>
+  </div>
+  
+  <div class="menu-item">
+    <label>Choose your course:</label>
+    <div class="dropdown">
+        <button class="dropbtn">CSCA08 - Introduction to Computer Science I</button>
+        <div class="dropdown-content">
+          <a href="#">CSCA20 - Introduction to Programming</a>
+          <a href="#">CSCA67 - Discrete Mathematics</a>
+          <a href="#">CSCB20 - Introduction to Databases and Web Applications
+      </div>
+    </div>
+  </div>
+</div>
+
+
+<div class= adddropfiles>
     <form action="#" method="post" enctype="multipart/form-data">
         <label for="audioFile">Select an audio file:</label>
         <input type="file" id="audioFile" name="audioFile" accept="audio/*">
         <br>
         <input type="submit" value="Upload">
     </form>
+</div>
 
 </body>
 </html>
