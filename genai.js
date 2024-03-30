@@ -1,29 +1,26 @@
-// Event listener for html page load (this function is called when the html page is loaded)
 document.addEventListener("DOMContentLoaded", function() {
-    const fileInput = document.getElementById("audioFile");
-    if (fileInput) {
-        // Event listener for file input change
-        // (whenever a change is made to "audioFile" from the html, the function "handleFileSelect" is called)
-        fileInput.addEventListener("change", handleFileSelect);
-    } else {
-        console.error("Element with ID 'audioFile' not found.");
-    }
+    document.getElementById("upload-form").addEventListener("submit", function(event) {
+        event.preventDefault();
+        var formData = new FormData(this);
+
+        fetch("/upload", {
+            method: "POST",
+            body: formData
+        })
+        .then(response => response.json())
+        .then(data => {
+            // Display transcribed text
+            document.getElementById("result-container").innerHTML = `
+                <h2>Transcribed Text:</h2>
+                <p>${data.transcribed_text}</p>
+                <h2>Paraphrased Text:</h2>
+                <p>${data.paraphrased_result}</p>
+                <h2>Summarized Text:</h2>
+                <p>${data.summarized_result}</p>
+            `;
+        })
+        .catch(error => {
+            console.error("Error:", error);
+        });
+    });
 });
-
-
-// handle file selection
-function handleFileSelect(event) {
-    const fileInput = document.getElementById("audioFile");
-    if (!fileInput) {
-        console.error("Element with ID 'audioFile' not found.");
-        return;
-    }
-    const file = event.target.files[0]; // Get the selected file
-
-    //print the file name to the console for now
-    console.log("Selected audio file:", file);
-
-    
-    
-    
-}

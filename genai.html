@@ -49,15 +49,20 @@
   </div>
 </div>
 
-
-<div class= adddropfiles>
-    <form action="#" method="post" enctype="multipart/form-data">
-        <label for="audioFile">Select an audio file:</label>
-        <input type="file" id="audioFile" name="audioFile" accept="audio/*">
+<div class="adddropfiles">
+    <form id="upload-form" enctype="multipart/form-data">
+        <label for="mediaFile">Select a video or audio file:</label>
+        <input type="file" id="mediaFile" name="mediaFile" accept="audio/*,video/*">
         <br>
         <input type="submit" value="Upload">
     </form>
 </div>
+
+<div id="result-container">
+  <!-- Display paraphrased and summarized text here -->
+</div>
+
+<script src="genai.js"></script>
 
 </body>
 </html>
