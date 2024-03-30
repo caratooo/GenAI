@@ -58,15 +58,20 @@
     </div>
 </div>
 
-
 <div class="adddropfiles">
     <h2>You can choose a video from our library to have summarised or upload your own!</h2>
 
     <form id="upload-form" enctype="multipart/form-data">
         <label for="mediaFile">Upload your own video or audio file:</label>  <br> <br>
         <input type="file" id="mediaFile" name="mediaFile" accept="audio/*,video/*">
-        <input type="submit" value="Upload">
+        <input type="submit" value="Upload"> <br><br>
     </form>
+
+    <form> 
+        <label for="imageUpload">Select an image:</label> 
+        <input type="file" id="imageUpload" name="imageUpload"> 
+        <input type="submit" value="Upload"> 
+      </form> 
 </div>
 
 <div id="result-container">
