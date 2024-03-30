@@ -21,35 +21,12 @@
 <h1>RecycleAI</h1>
 
 <div class="adddropfiles">
-    <h2>You can choose a video from our library to have summarised or upload your own!</h2>
-
     <form id="upload-form" enctype="multipart/form-data">
-        <label for="mediaFile">Upload your own video or audio file:</label>  <br> <br>
+        <label for="mediaFile">Upload or take a photo:</label>  <br> <br>
         <input type="file" id="mediaFile" name="mediaFile" accept="audio/*,video/*">
         <input type="submit" value="Upload"> <br><br>
-        <label for="mediaFile">Select an image</label>
-        <input type="file" id="mediaFile" name="mediaFile" accept="image/*">
-        <br>
-        <input type="submit" value="Upload">
     </form>
-
-    <form> 
-        <label for="imageUpload">Select an image:</label> 
-        <input type="file" id="imageUpload" name="imageUpload"> 
-        <input type="submit" value="Upload"> 
-      </form> 
 </div>
-
-<div id="result-container">
-    <h2>Transcribed Text:</h2>
-    <p id="transcribed-text"></p>
-    <h2>Paraphrased Text:</h2>
-    <p id="paraphrased-text"></p>
-    <h2>Summarized Text:</h2>
-    <p id="summarized-text"></p>
-</div>
-
-<script src="genai.js"></script>
 
 </body>
 </html>
