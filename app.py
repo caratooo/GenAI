@@ -103,6 +103,7 @@ def index():
     return app.send_static_file("index.html")
 
 @app.route("/upload", methods=["POST"])
+@app.route("/upload", methods=["POST"])
 def upload():
     uploaded_file = request.files["mediaFile"]
     audio_path = "/path/to/save/uploaded/audio_file.wav"  # Update with the path to save the uploaded audio file

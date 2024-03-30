@@ -6,61 +6,73 @@
     <title>genAI project</title>
     <script src="genai.js"></script>
     <link rel="stylesheet" type="text/css" href="genai.css">
+    <style>
+        /* Add CSS to style anchor tags */
+        .menu-item .dropdown-content a,
+        .adddropfiles a {
+            text-decoration: none; /* Remove underline */
+            color: inherit; /* Inherit color */
+            cursor: default; /* Remove pointer cursor */
+        }
+    </style>
 </head>
 <body>
 
-   <div class=h2> <h1>AccessiNotes</h1> </div>
+<div class=h2> <h1>AccessiNotes</h1> </div>
 
 <div class="menu">
-  <div class="menu-item">
-    <label>Choose your university:</label>
-    <div class="dropdown">
-        <button class="dropbtn">University of Toronto</button>
-        <div class="dropdown-content">
-            <a href="#">York University</a>
-            <a href="#">McMaster University</a>
-            <a href="#">York University</a>
-            <a href="#">GenAi High School</a>
-      </div>
+    <div class="menu-item">
+        <label>Choose your university:</label>
+        <div class="dropdown">
+            <button class="dropbtn">University of Toronto</button>
+            <div class="dropdown-content">
+                <a href="#">York University</a>
+                <a href="#">McMaster University</a>
+                <a href="#">GenAi High School</a>
+            </div>
+        </div>
     </div>
-  </div>
-  
-  <div class="menu-item">
-    <label>Choose your program:</label>
-    <div class="dropdown">
-      <button class="dropbtn">Computer Science</button>
-      <div class="dropdown-content">
-        <a href="#">Software Engineering</a>
-        <a href="#">Electrical Engineering</a>
-        <a href="#">Digital Media</a>
-      </div>
+
+    <div class="menu-item">
+        <label>Choose your program:</label>
+        <div class="dropdown">
+            <button class="dropbtn">Computer Science</button>
+            <div class="dropdown-content">
+                <a href="#">Software Engineering</a>
+                <a href="#">Electrical Engineering</a>
+                <a href="#">Digital Media</a>
+            </div>
+        </div>
     </div>
-  </div>
-  
-  <div class="menu-item">
-    <label>Choose your course:</label>
-    <div class="dropdown">
-        <button class="dropbtn">CSCA08 - Introduction to Computer Science I</button>
-        <div class="dropdown-content">
-          <a href="#">CSCA20 - Introduction to Programming</a>
-          <a href="#">CSCA67 - Discrete Mathematics</a>
-          <a href="#">CSCB20 - Introduction to Databases and Web Applications
-      </div>
+
+    <div class="menu-item">
+        <label>Choose your course:</label>
+        <div class="dropdown">
+            <button class="dropbtn">CSCA08 - Introduction to Computer Science I</button>
+            <div class="dropdown-content">
+                <a href="#">CSCA20 - Introduction to Programming</a>
+                <a href="#">CSCA67 - Discrete Mathematics</a>
+                <a href="#">CSCB20 - Introduction to Databases and Web Applications</a>
+            </div>
+        </div>
     </div>
-  </div>
 </div>
 
 <div class="adddropfiles">
     <form id="upload-form" enctype="multipart/form-data">
-        <label for="mediaFile">Select a video or audio file:</label>
+        <label for="mediaFile">Select a video or audio file:</label>  <br> <br>
         <input type="file" id="mediaFile" name="mediaFile" accept="audio/*,video/*">
-        <br>
         <input type="submit" value="Upload">
     </form>
 </div>
 
 <div id="result-container">
-  <!-- Display paraphrased and summarized text here -->
+    <h2>Transcribed Text:</h2>
+    <p id="transcribed-text"></p>
+    <h2>Paraphrased Text:</h2>
+    <p id="paraphrased-text"></p>
+    <h2>Summarized Text:</h2>
+    <p id="summarized-text"></p>
 </div>
 
 <script src="genai.js"></script>

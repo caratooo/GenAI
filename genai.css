@@ -4,7 +4,10 @@ font-family:'Times New Roman', serif;}
 
 .adddropfiles{
     margin-top: 50px;
-    font-family:'Times New Roman', serif;}
+    font-family:'Times New Roman', serif;
+    text-align: center; 
+    display: flex;
+    flex-direction: column;}
 
     .menu {
         display: flex;
@@ -61,3 +64,19 @@ font-family:'Times New Roman', serif;}
       label {
         font-weight: bold;
       }
+
+
+
+
+      .adddropfiles {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        text-align: center;
+         /* Optional: Center vertically on the page */
+    }
+    
+    .center-align {
+        text-align: center;
+    }
+    
