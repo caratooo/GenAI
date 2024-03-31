@@ -4,6 +4,10 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>genAI project</title>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Luckiest+Guy&family=Ubuntu:ital,wght@0,300;0,400;0,500;0,700;1,300;1,400;1,500;1,700&display=swap')
+    </style>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
     <!-- <script src="{{ url_for('static', filename='genai.js') }}"></script> -->
 
     <!-- <script src="genai.js"></script> -->
@@ -17,32 +21,31 @@
 
 <h1 class="my_heading">RecycleAI</h1>
 
-<br>
-<br>
 <!-- <img id="image-preview" class="hidden" src="{{ url_for('static', filename=img) }}" alt="Image Preview"> -->
 <img id="image-preview" class="image-preview" src="{{ url_for('static', filename=img) }}" alt="Image Preview">
 
-<div>
+<div class="yuh">
     <h2 id = "result">Waste Type: {{ waste_type }}</h2>
 </div>
 
-<div class="adddropfiles">
+<div class="center_div">
     <form id="upload-form" 
           enctype="multipart/form-data" 
           method="POST"
-          action="{{ url_for('handle_post') }}">
-        <label for="mediaFile">Select an image</label>
-        <input type="file" id="mediaFile" name="mediaFile" accept="image/*">
-        <input type="submit" value="Upload">
+          action="{{ url_for('handle_post') }}"
+          class="adddropfiles">
+        <label for="mediaFile" class="media_label">Select an image</label>
+        <div class="wrapper">
+            <div class="file-upload">
+                <input type="file" id="mediaFile" name="mediaFile" accept="image/*">
+                <i class="fa fa-arrow-up"></i>
+            </div>
+        </div>
+        <input type="submit" value="Upload" class="submit">
+        <!-- <button id="capture">Capture</button> -->
     </form>
 </div>
 
-<img id="image-preview" class="image-preview" src="{{ url_for('static', filename=img) }}" alt="Image Preview">
-
-<div>
-    <h2 id = "result">Waste Type: {{ waste_type }}</h2>
-</div>
-  
 <!-- <script>
     document.getElementById('capture').onclick = async () => {
         try {
