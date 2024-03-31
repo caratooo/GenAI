@@ -2,6 +2,9 @@ h1{
 font-family:'Times New Roman', serif;
 color: green;
 }
+.hidden {
+    display: none;
+}
 
 .adddropfiles {
     margin-top: 50px; /* Adjust this value to move it up or down */

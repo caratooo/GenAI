@@ -35,6 +35,7 @@ function handleFileSelect(event) {
 function previewImage() {
     var input = document.getElementById('mediaFile');
     var preview = document.getElementById('image-preview');
+    preview.classList.remove('hidden');
     
     var file = input.files[0];
     var reader = new FileReader();
@@ -44,6 +45,7 @@ function previewImage() {
     }
         
     reader.readAsDataURL(file);
+
     
 }
 
