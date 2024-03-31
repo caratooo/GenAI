@@ -35,8 +35,10 @@ function handleFileSelect(event) {
 function previewImage() {
     var input = document.getElementById('mediaFile');
     var preview = document.getElementById('image-preview');
+    var result = document.getElementById('result');
+    
     preview.classList.remove('hidden');
-    document.getElementById('result').classList.remove('hidden');
+    result.classList.remove('hidden');
     document.getElementById('instruction').textContent = 'Upload New Image';
     
     var file = input.files[0];
