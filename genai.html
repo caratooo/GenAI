@@ -19,7 +19,7 @@
     enctype="multipart/form-data"
     method = "POST"
     action = "{{url_for('handle_post')}}">
-        <label for="mediaFile">Upload or take a photo:</label>  <br> <br>
+        <label for="mediaFile" id = "instruction">Upload or take a photo:</label>  <br> <br>
         <input type="file" id="mediaFile" name="mediaFile" accept="image/*">
         <input type="submit" value="Upload"> <br><br>
         <button id="capture">Capture</button>
@@ -28,6 +28,7 @@
 <br>
 <br>
 <img id="image-preview" src="#" alt="Image Preview" class="hidden">
+<h2 id = "result" class = "hidden">Results:</h2>
 
 <script>
     document.getElementById('capture').onclick = async () => {

@@ -36,6 +36,8 @@ function previewImage() {
     var input = document.getElementById('mediaFile');
     var preview = document.getElementById('image-preview');
     preview.classList.remove('hidden');
+    document.getElementById('result').classList.remove('hidden');
+    document.getElementById('instruction').textContent = 'Upload New Image';
     
     var file = input.files[0];
     var reader = new FileReader();
