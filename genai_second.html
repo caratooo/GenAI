@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>genAI project</title>
+    <!-- <script src="{{ url_for('static', filename='genai.js') }}"></script> -->
+
+    <!-- <script src="genai.js"></script> -->
+    <!-- <link rel="stylesheet" type="text/css" href="genai.css"> -->
+    <link rel= "stylesheet" type= "text/css" href= "{{ url_for('static',filename='genai.css') }}">
+</head>
+<body>
+<div class="body-middle">
+    <img src="{{ url_for('static', filename='assets/Untitled design.jpg') }}" class="video" alt="boxes" />
+</div>
+
+<h1 class="my_heading">RecycleAI</h1>
+
+<br>
+<br>
+<!-- <img id="image-preview" class="hidden" src="{{ url_for('static', filename=img) }}" alt="Image Preview"> -->
+<img id="image-preview" class="image-preview" src="{{ url_for('static', filename=img) }}" alt="Image Preview">
+
+<div>
+    <h2 id = "result">Waste Type: {{ waste_type }}</h2>
+</div>
+
+<div class="adddropfiles">
+    <form id="upload-form" 
+          enctype="multipart/form-data" 
+          method="POST"
+          action="{{ url_for('handle_post') }}">
+        <label for="mediaFile">Select an image</label>
+        <input type="file" id="mediaFile" name="mediaFile" accept="image/*">
+        <input type="submit" value="Upload">
+    </form>
+</div>
+
+<img id="image-preview" class="image-preview" src="{{ url_for('static', filename=img) }}" alt="Image Preview">
+
+<div>
+    <h2 id = "result">Waste Type: {{ waste_type }}</h2>
+</div>
+  
+<!-- <script>
+    document.getElementById('capture').onclick = async () => {
+        try {
+            const stream = await navigator.mediaDevices.getUserMedia({ video: true });
+            const video = document.createElement('video');
+            video.srcObject = stream;
+            video.autoplay = true;
+
+            const container = document.createElement('div');
+            container.appendChild(video);
+            document.body.appendChild(container);
+        } catch (error) {
+            console.error('Error accessing camera:', error);
+        }
+    };
+</script> -->
+
+</body>
+</html>
