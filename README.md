@@ -1,7 +1,7 @@
 # RecycleAI
 
-SDG: 4 + 11 + 13
-Overview: 
+SDGs: 4 + 11 + 13
+Overview: RecycleAI is a user-friendly application that empowers individuals to make informed decisions about waste disposal. Users can simply take a photo of their waste, and RecycleAI utilizes AI algorithms to analyze the image and determine whether the waste is categorized as trash, recycling, or organic material.
 
 Languages+Tools:
 - HTML+CSS+Javascript
