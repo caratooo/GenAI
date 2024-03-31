@@ -7,7 +7,7 @@ import os
 project_root = os.path.dirname(__file__)
 template_path = os.path.join(project_root, './')
 
-app = Flask(__name__, template_folder=template_path)
+app = Flask(__name__, template_folder=template_path, static_folder=project_root)
 app.config['UPLOAD_FOLDER'] = './uploaded'
 
 # app = Flask(__name__)
@@ -26,51 +26,23 @@ def handle_post():
         print(file_type)
         print(imagefile.filename)
         imagefile.save(os.path.join(app.config['UPLOAD_FOLDER'], imagefile.filename))
-        image = Image.load_from_file(imagefile.filename)
+        image = Image.load_from_file(os.path.join(app.config['UPLOAD_FOLDER'], imagefile.filename))
         
         vertexai.init(project="testing-testing-393023", location="us-west4")
 
         # Load the model
         model = GenerativeModel(model_name="gemini-pro-vision")
 
-        # Load example image
-        # image_url = "gs://why_pourquoi/chip.jpg"
-        # image_content = Part.from_uri(image_url, "image/jpeg")
-
         # Query the model
         response = model.generate_content([image, "Is this 'trash', 'recycling' or 'organic'? You must respond with one of the previous three options."])
-        # print(type(response))
-        # content = response.candidates
-        # print(content)
         print(response.text)
         print(type(response.text))
 
-        return render_template('genai_second.html', waste_type=response.text)
-        # return "good"
+        return render_template('genai_second.html', waste_type=response.text, img=os.path.join(app.config['UPLOAD_FOLDER'], imagefile.filename))
+
     else:
         return render_template('genai.html')
 
-
-def generate_text(project_id: str, location: str) -> None:
-    # Initialize Vertex AI
-    vertexai.init(project=project_id, location=location)
-
-    # Load the model
-    model = GenerativeModel(model_name="gemini-pro-vision")
-
-    # Load example image
-    image_url = "gs://why_pourquoi/chip.jpg"
-    image_content = Part.from_uri(image_url, "image/jpeg")
-
-    # Query the model
-    response = model.generate_content([image_content, "Is this 'trash', 'recycling' or 'organic'? You must respond with one of the previous three options."])
-    # print(type(response))
-    # content = response.candidates
-    # print(content)
-    print(response.text)
-    print(type(response.text))
-
-    return response.text
 
 if __name__ == '__main__':
    app.run()
