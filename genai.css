@@ -1,84 +1,153 @@
-h1{
-font-family: "Lucida Sans Unicode", "Lucida Grande", sans-serif;
-color: green;
+h1.my_heading{
+    margin-block-start: 0;
+    margin-block-end: 0;
+    /* margin-top: 30; */
+    margin-bottom: 10;
+    font-family:"Luckiest Guy";
+    color: rgb(0, 170, 0);
+    font-size: 150px; 
+    letter-spacing: 5px;
+    padding-bottom: 20;
 }
+
+.yuh {
+    margin-bottom: 15px;
+}
+
 .hidden {
     display: none;
 }
-
-.adddropfiles {
-    margin-top: 50px; /* Adjust this value to move it up or down */
-    font-family: "Lucida Sans Unicode", "Lucida Grande", sans-serif;
-    text-align: center;
-    display: flex;
-    flex-direction: column;}
     
 #image-preview {
-  max-width: 200px;
-  max-height: 200px;
-  margin-top: 20px;
+    max-width: 200px;
+    max-height: 250px;
+    margin-bottom: 15px;
+    margin-top: 15px;
 }
 
-body{
+.huh {
+    font-family: Ubuntu;
+    
+}
+
+body {
     background-color: #f0f0f0;
-    font-family: "Lucida Sans Unicode", "Lucida Grande", sans-serif;
+    font-family: Ubuntu;
     margin: 0;
     padding: 0;
     text-align: center;
 }
-    
-    .center-align {
-        text-align: center;
-    }
-    
+
+.result {
+    padding-bottom: 20;
+}
 
 .adddropfiles{
-    margin-top: 50px;
-    font-family: "Lucida Sans Unicode", "Lucida Grande", sans-serif;
+    /* margin-top: 50px; */
+    font-family: 'Ubuntu';
     font-size: 30px;
+    display: flex;
+    flex-direction: column;
     text-align: center;
-    color: #4c6dbf;
+    justify-content: center;
+    position: absolute;
+    color: white;
+    }
+
+.center_div {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 300px;
+    margin-top: 20;
+}
+
+/* Ensure the image covers the entire page */
+body, html {
+    /* height: 100%;
+    margin: 0; */
+    justify-content: center;
+    overflow: hidden; /* Prevent scrollbars */
+}
+
+/* Style the image to cover the entire page */
+.video {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    z-index: -1; /* Ensure the image is behind the text */
+}
+
+.media_label {
+    height: 40px;
+    margin-top: 20px;
+    margin-bottom: 20px;
+}
+
+.submit {
+    height: 30px;
+    margin-top: 20px;
+    border: none;
+    background-color: white;
+    border-radius: 5px;
+}
+
+.wrapper{
+  
+    width:100%;
+    height:100%;
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    margin-top: 20;
+    margin-bottom: 20;
+    
+  
+    .file-upload{
+  
+      height:150px;
+      width:150px;
+      border-radius: 50px;
+      position:relative;
+      
+      display:flex;
+      justify-content:center;
+      align-items: center;  
+  
+      /* border:4px solid #FFFFFF; */
+      overflow:hidden;
+      background-image: linear-gradient(to bottom, rgb(0, 170, 0) 50%, #FFFFFF 50%);
+      background-size: 100% 200%;
+      transition: all 1s;
+      color: #FFFFFF;
+      font-size:100px;
+  
+      input[type='file']{
+  
+        height:200px;
+        width:200px;
+        position:absolute;
+        top:0;
+        left:0;
+        opacity:0;
+        cursor:pointer;
+  
+      }
+  
+      &:hover{
+  
+        background-position: 0 -100%;
+  
+        color:rgb(0, 170, 0);
+  
+      }
+  
+  
+    }
   }
-
-        /* Add CSS to style anchor tags */
-        .menu-item .dropdown-content a,
-        .adddropfiles a {
-            text-decoration: none; /* Remove underline */
-            color: inherit; /* Inherit color */
-            cursor: default; /* Remove pointer cursor */
-        }
-
-        /* Ensure the image covers the entire page */
-        body, html {
-            height: 100%;
-            margin: 0;
-            overflow: hidden; /* Prevent scrollbars */
-        }
-
-        /* Style the h1 */
-        h1 {
-            text-align: center;
-            font-size: 48px;
-            margin-top: 20px; /* Add top margin to push it down */
-            margin-bottom: 20px; /* Add bottom margin for spacing */
-        }
-
-        /* Style the image to cover the entire page */
-        .video {
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            object-fit: cover;
-            z-index: -1; /* Ensure the image is behind the text */
-        }
-
-        /* Position the form at the center */
-        .adddropfiles {
-            position: absolute;
-            top: 50%;
-            left: 50%;
-            transform: translate(-50%, -50%);
-            text-align: center;
-        }
+  
+  
+  
