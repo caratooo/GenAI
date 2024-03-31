@@ -1,0 +1,76 @@
+from flask import Flask, render_template, request
+import vertexai
+from vertexai.generative_models import GenerativeModel, Part, Image
+
+import os
+
+project_root = os.path.dirname(__file__)
+template_path = os.path.join(project_root, './')
+
+app = Flask(__name__, template_folder=template_path)
+app.config['UPLOAD_FOLDER'] = './uploaded'
+
+# app = Flask(__name__)
+
+@app.route('/')
+def home():
+    return render_template('genai.html')
+
+# handle get method
+@app.route('/handle_post', methods=['POST'])
+def handle_post():
+    if request.method == 'POST':
+        imagefile = request.files.get('mediaFile', '')
+        # file = request.files['file']
+        file_type = str(type(imagefile))
+        print(file_type)
+        print(imagefile.filename)
+        imagefile.save(os.path.join(app.config['UPLOAD_FOLDER'], imagefile.filename))
+        image = Image.load_from_file(imagefile.filename)
+        
+        vertexai.init(project="testing-testing-393023", location="us-west4")
+
+        # Load the model
+        model = GenerativeModel(model_name="gemini-pro-vision")
+
+        # Load example image
+        # image_url = "gs://why_pourquoi/chip.jpg"
+        # image_content = Part.from_uri(image_url, "image/jpeg")
+
+        # Query the model
+        response = model.generate_content([image, "Is this 'trash', 'recycling' or 'organic'? You must respond with one of the previous three options."])
+        # print(type(response))
+        # content = response.candidates
+        # print(content)
+        print(response.text)
+        print(type(response.text))
+
+        return render_template('genai_second.html', waste_type=response.text)
+        # return "good"
+    else:
+        return render_template('genai.html')
+
+
+def generate_text(project_id: str, location: str) -> None:
+    # Initialize Vertex AI
+    vertexai.init(project=project_id, location=location)
+
+    # Load the model
+    model = GenerativeModel(model_name="gemini-pro-vision")
+
+    # Load example image
+    image_url = "gs://why_pourquoi/chip.jpg"
+    image_content = Part.from_uri(image_url, "image/jpeg")
+
+    # Query the model
+    response = model.generate_content([image_content, "Is this 'trash', 'recycling' or 'organic'? You must respond with one of the previous three options."])
+    # print(type(response))
+    # content = response.candidates
+    # print(content)
+    print(response.text)
+    print(type(response.text))
+
+    return response.text
+
+if __name__ == '__main__':
+   app.run()
