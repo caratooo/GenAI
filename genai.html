@@ -4,35 +4,46 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>genAI project</title>
-    <script src="genai.js"></script>
-    <link rel="stylesheet" type="text/css" href="genai.css">
+    <!-- <script src="{{ url_for('static', filename='genai.js') }}"></script> -->
+    <link rel= "stylesheet" type= "text/css" href= "{{ url_for('static',filename='genai.css') }}">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Luckiest+Guy&family=Ubuntu:ital,wght@0,300;0,400;0,500;0,700;1,300;1,400;1,500;1,700&display=swap')
+    </style>
+    <!-- <link rel="stylesheet" type="text/css" href="genai.css"> -->
 </head>
 <body>
-<div class="body-middle">
-    <img src="assets/Untitled design.jpg" class="video" alt="boxes" />
-</div>
 
-<h1>RecycleAI</h1>
+<img src="{{ url_for('static', filename='assets/Untitled design.jpg') }}" class="video" alt="boxes" />
 
-<div class="adddropfiles">
+
+<h1 class="my_heading">RecycleAI</h1>
+
+<div class="center_div">
     <form id="upload-form" 
-    enctype="multipart/form-data"
-    method = "POST"
-    action = "{{url_for('handle_post')}}">
-        <label for="mediaFile" id = "instruction">Upload or take a photo:</label>  <br> <br>
-        <input type="file" id="mediaFile" name="mediaFile" accept="image/*">
-        <input type="submit" value="Upload"> <br><br>
-        <button id="capture">Capture</button>
+          enctype="multipart/form-data" 
+          method="POST"
+          action="{{ url_for('handle_post') }}"
+          class="adddropfiles">
+        <label for="mediaFile" class="media_label">Select an image</label>
+        <div class="wrapper">
+            <div class="file-upload">
+                <input type="file" id="mediaFile" name="mediaFile" accept="image/*">
+                <i class="fa fa-arrow-up"></i>
+            </div>
+        </div>
+        <input type="submit" value="Upload" class="submit">
+        <!-- <button id="capture">Capture</button> -->
     </form>
 </div>
-<br>
-<br>
-<img id="image-preview" src="#" alt="Image Preview" class="hidden">
 
-<div>
-<h2 id = "result" class = "hidden">Waste Type:</h2>
-</div>
+<!-- <img id="image-preview" class="hidden" src="{{ url_for('static', filename=img) }}" alt="Image Preview">
+ <img id="image-preview" class="image-preview" src="{{ url_for('static', filename=img) }}" alt="Image Preview"> -->
 
+<!-- <div>
+    <h2 id = "result" class="hidden">Waste Type: {{ waste_type }}</h2>
+</div> -->
+<!-- 
 <script>
     document.getElementById('capture').onclick = async () => {
         try {
@@ -48,7 +59,7 @@
             console.error('Error accessing camera:', error);
         }
     };
-</script>
+</script> -->
 
 </body>
 </html>
