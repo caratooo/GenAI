@@ -1,5 +1,5 @@
 h1{
-font-family:'Times New Roman', serif;
+font-family: "Lucida Sans Unicode", "Lucida Grande", sans-serif;
 color: green;
 }
 .hidden {
@@ -8,7 +8,7 @@ color: green;
 
 .adddropfiles {
     margin-top: 50px; /* Adjust this value to move it up or down */
-    font-family: 'Times New Roman', serif;
+    font-family: "Lucida Sans Unicode", "Lucida Grande", sans-serif;
     text-align: center;
     display: flex;
     flex-direction: column;}
@@ -21,20 +21,11 @@ color: green;
 
 body{
     background-color: #f0f0f0;
-    font-family: Arial, sans-serif;
+    font-family: "Lucida Sans Unicode", "Lucida Grande", sans-serif;
     margin: 0;
     padding: 0;
     text-align: center;
 }
-
-
-      .adddropfiles {
-        margin-top: -100px; 
-        font-family: 'Times New Roman', serif;
-        text-align: center;
-        display: flex;
-        flex-direction: column;
-    }
     
     .center-align {
         text-align: center;
@@ -43,6 +34,7 @@ body{
 
 .adddropfiles{
     margin-top: 50px;
+    font-family: "Lucida Sans Unicode", "Lucida Grande", sans-serif;
     font-size: 30px;
     text-align: center;
     color: #4c6dbf;
@@ -65,7 +57,6 @@ body{
 
         /* Style the h1 */
         h1 {
-            color: black; /* Change text color to black */
             text-align: center;
             font-size: 48px;
             margin-top: 20px; /* Add top margin to push it down */
